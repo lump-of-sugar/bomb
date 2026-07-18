@@ -218,7 +218,7 @@ function success() {
 
     setTimeout(() => {
 
-        window.location.href = "page2/index.html";
+        window.location.href = "page2.html";
 
     }, 3000);
 
