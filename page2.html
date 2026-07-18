@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Page 2</title>
+
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="page2.css">
+</head>
+<body class="page2">
+
+    <!-- ==========================================
+         赤オーバーレイ（警告・失敗演出）
+    =========================================== -->
+    <div id="redOverlay"></div>
+
+    <!-- ==========================================
+         メインコンテナ
+    =========================================== -->
+    <main id="gameContainer">
+
+        <!-- 背景画像（初期状態） -->
+        <div id="background"></div>
+
+        <!-- 爆弾表示エリア -->
+        <section id="bombPanel">
+
+            <!-- ==================================
+                 タイマー表示
+            =================================== -->
+            <div id="timerArea">
+                <div id="timerDisplay">05:00</div>
+            </div>
+
+        </section>
+
+        <!-- ==================================
+             コードタッチエリア
+             （背景画像上のコード位置に合わせる）
+        =================================== -->
+        <div id="wireArea">
+
+            <button class="wireBtn red" data-wire="red" aria-label="赤"></button>
+
+            <button class="wireBtn orange" data-wire="orange" aria-label="橙"></button>
+
+            <button class="wireBtn yellow" data-wire="yellow" aria-label="黄"></button>
+
+            <button class="wireBtn green" data-wire="green" aria-label="緑"></button>
+
+            <button class="wireBtn cyan" data-wire="cyan" aria-label="水色"></button>
+
+            <button class="wireBtn blue" data-wire="blue" aria-label="青"></button>
+
+            <button class="wireBtn purple" data-wire="purple" aria-label="紫"></button>
+
+        </div>
+
+    </main>
+
+    <!-- ==========================================
+         メッセージ表示
+    =========================================== -->
+    <div id="message"></div>
+
+    <!-- ==========================================
+         切断確認ダイアログ
+    =========================================== -->
+    <div id="confirmOverlay" class="hidden">
+
+        <div id="confirmDialog">
+
+            <div id="confirmText">
+                赤色のコードを切りますか？
+            </div>
+
+            <div id="confirmButtons">
+
+                <button id="cancelBtn">
+                    キャンセル
+                </button>
+
+                <button id="cutBtn">
+                    切る
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+         切断後画像表示
+    =========================================== -->
+    <div id="cutImageOverlay" class="hidden">
+
+        <img
+            id="cutImage"
+            src=""
+            alt="切断後">
+
+    </div>
+
+    <!-- ==========================================
+         成功画面
+    =========================================== -->
+    <div id="successScreen" class="hidden">
+
+        <div id="successText">
+            Buone vacanze !
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+         ゲームオーバー
+    =========================================== -->
+    <div id="gameOverScreen" class="hidden">
+
+        <div id="gameOverText">
+            夏休みを迎えることはできなかった…
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="page2.js"></script>
+
+</body>
+</html>

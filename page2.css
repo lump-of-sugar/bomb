@@ -1,0 +1,585 @@
+/* =========================================================
+   Page2 style.css
+   スマホ向けレイアウト
+========================================================= */
+
+/* ---------------------------------------------------------
+   リセット
+--------------------------------------------------------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    font-family:
+        "Segoe UI",
+        "Helvetica Neue",
+        sans-serif;
+    touch-action:manipulation;
+}
+
+/* =========================================================
+   ページ全体
+========================================================= */
+
+body.page2{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* =========================================================
+   メインコンテナ
+========================================================= */
+
+#gameContainer{
+
+    position:relative;
+
+    width:100%;
+    max-width:430px;
+
+    height:100vh;
+
+    overflow:hidden;
+
+}
+
+/* =========================================================
+   背景画像
+========================================================= */
+
+#background{
+
+    position:absolute;
+    inset:0;
+
+    background-image:url("images/page2_background.webp");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    z-index:1;
+
+}
+
+/* =========================================================
+   爆弾パネル
+========================================================= */
+
+#bombPanel{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:88%;
+
+    display:flex;
+    justify-content:center;
+
+    z-index:5;
+
+}
+
+/* =========================================================
+   タイマー
+========================================================= */
+
+#timerArea{
+
+    width:82%;
+
+    display:flex;
+    justify-content:center;
+
+}
+
+#timerDisplay{
+
+    width:100%;
+
+    text-align:center;
+
+    color:#ff2f2f;
+
+    font-size:3.2rem;
+
+    font-weight:bold;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    letter-spacing:6px;
+
+    user-select:none;
+
+    text-shadow:
+        0 0 5px #ff0000,
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 35px rgba(255,0,0,.8);
+
+}
+
+/* =========================================================
+   コードタッチエリア
+========================================================= */
+
+#wireArea{
+
+    position:absolute;
+
+    left:50%;
+
+    top:58%;
+
+    transform:translateX(-50%);
+
+    width:72%;
+
+    height:240px;
+
+    z-index:20;
+
+}
+
+/* =========================================================
+   各コード判定
+========================================================= */
+
+.wireBtn{
+
+    position:absolute;
+
+    width:100%;
+
+    height:16px;
+
+    background:transparent;
+
+    border:none;
+
+    cursor:pointer;
+
+}
+
+/* 背景画像に合わせて配置 */
+
+.red{
+    top:0;
+}
+
+.orange{
+    top:34px;
+}
+
+.yellow{
+    top:68px;
+}
+
+.green{
+    top:102px;
+}
+
+.cyan{
+    top:136px;
+}
+
+.blue{
+    top:170px;
+}
+
+.purple{
+    top:204px;
+}
+
+/* =========================================================
+   メッセージ
+========================================================= */
+
+#message{
+
+    position:fixed;
+
+    left:50%;
+    bottom:70px;
+
+    transform:translateX(-50%);
+
+    min-width:220px;
+
+    max-width:90%;
+
+    padding:14px 22px;
+
+    border-radius:10px;
+
+    background:rgba(0,0,0,.85);
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:1.2rem;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:300;
+
+}
+
+#message.show{
+
+    opacity:1;
+
+}
+
+/* =========================================================
+   赤オーバーレイ
+========================================================= */
+
+#redOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#ff0000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:200;
+
+}
+
+/* =========================================================
+   確認ダイアログ
+========================================================= */
+
+#confirmOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.72);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:500;
+
+}
+
+#confirmOverlay.hidden{
+
+    display:none;
+
+}
+
+#confirmDialog{
+
+    width:88%;
+
+    max-width:340px;
+
+    background:#222;
+
+    border-radius:14px;
+
+    padding:26px 20px;
+
+}
+
+#confirmText{
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:1.2rem;
+
+    line-height:1.6;
+
+}
+
+#confirmButtons{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    margin-top:24px;
+
+}
+
+#confirmButtons button{
+
+    flex:1;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:8px;
+
+    color:#fff;
+
+    font-size:1rem;
+
+}
+
+#cancelBtn{
+
+    background:#666;
+
+}
+
+#cutBtn{
+
+    background:#d62828;
+
+}
+
+/* =========================================================
+   切断画像
+========================================================= */
+
+#cutImageOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:700;
+
+}
+
+#cutImageOverlay.hidden{
+
+    display:none;
+
+}
+
+#cutImage{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/* =========================================================
+   成功画面
+========================================================= */
+
+#successScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.82);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:900;
+
+}
+
+#successScreen.hidden{
+
+    display:none;
+
+}
+
+#successText{
+
+    color:#ffffff;
+
+    font-size:2.2rem;
+
+    font-weight:bold;
+
+    text-align:center;
+
+}
+
+/* =========================================================
+   ゲームオーバー
+========================================================= */
+
+#gameOverScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#c80000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    z-index:1000;
+
+}
+
+#gameOverScreen.hidden{
+
+    display:none;
+
+}
+
+#gameOverText{
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:2rem;
+
+    font-weight:bold;
+
+    line-height:1.6;
+
+}
+
+/* =========================================================
+   赤点滅
+========================================================= */
+
+.flashError{
+
+    animation:errorFlash .25s linear 3;
+
+}
+
+@keyframes errorFlash{
+
+    0%{
+        opacity:0;
+    }
+
+    50%{
+        opacity:.55;
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   残り1分警告
+========================================================= */
+
+.warningFlash{
+
+    animation:warningFlash 2s ease-in-out infinite;
+
+}
+
+@keyframes warningFlash{
+
+    0%{
+        opacity:0;
+    }
+
+    50%{
+        opacity:.35;
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   スマホ小型
+========================================================= */
+
+@media (max-width:390px){
+
+    #timerDisplay{
+
+        font-size:2.7rem;
+
+    }
+
+    #wireArea{
+
+        height:210px;
+
+    }
+
+    .orange{ top:30px; }
+    .yellow{ top:60px; }
+    .green{ top:90px; }
+    .cyan{ top:120px; }
+    .blue{ top:150px; }
+    .purple{ top:180px; }
+
+}
+
+/* =========================================================
+   タブレット
+========================================================= */
+
+@media (min-width:768px){
+
+    #gameContainer{
+
+        max-width:430px;
+
+        margin:auto;
+
+    }
+
+}

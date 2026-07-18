@@ -1,0 +1,551 @@
+/* =========================================================
+   Page1 style.css
+   スマホ向けレイアウト
+========================================================= */
+
+/* ------------------------------
+   リセット
+------------------------------ */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:
+        "Segoe UI",
+        "Helvetica Neue",
+        sans-serif;
+    background:#000;
+    touch-action:manipulation;
+}
+
+/* =========================================================
+   ページ全体
+========================================================= */
+
+body.page1{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* =========================================================
+   メインコンテナ
+========================================================= */
+
+#gameContainer{
+    position:relative;
+
+    width:100%;
+    max-width:430px;
+    height:100vh;
+
+    overflow:hidden;
+}
+
+/* =========================================================
+   背景画像
+========================================================= */
+
+#background{
+
+    position:absolute;
+    inset:0;
+
+    background-image:url("images/page1_background.webp");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    z-index:1;
+
+}
+
+/* =========================================================
+   爆弾パネル
+========================================================= */
+
+#bombPanel{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:88%;
+
+    z-index:5;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
+/* =========================================================
+   タイマー
+========================================================= */
+
+#timerArea{
+
+    width:82%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin-bottom:28px;
+
+}
+
+#timerDisplay{
+
+    width:100%;
+
+    text-align:center;
+
+    color:#ff2d2d;
+
+    font-size:3.2rem;
+
+    font-weight:bold;
+
+    letter-spacing:6px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    text-shadow:
+        0 0 6px #ff0000,
+        0 0 12px #ff0000,
+        0 0 20px #ff0000,
+        0 0 35px rgba(255,0,0,.8);
+
+    user-select:none;
+
+}
+
+/* =========================================================
+   パスワード入力
+========================================================= */
+
+#passwordArea{
+
+    width:78%;
+
+}
+
+#passwordInput{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:rgba(15,15,15,.92);
+
+    color:#ffffff;
+
+    font-size:2rem;
+
+    text-align:center;
+
+    letter-spacing:8px;
+
+    outline:none;
+
+    cursor:pointer;
+
+    box-shadow:
+        inset 0 0 8px rgba(0,0,0,.8),
+        0 0 10px rgba(255,255,255,.08);
+
+}
+
+/* プレースホルダー */
+
+#passwordInput::placeholder{
+
+    color:#999;
+
+    letter-spacing:8px;
+
+}
+
+/* =========================================================
+   メッセージ表示
+========================================================= */
+
+#message{
+
+    position:fixed;
+
+    left:50%;
+    bottom:80px;
+
+    transform:translateX(-50%);
+
+    min-width:220px;
+
+    max-width:90%;
+
+    padding:14px 20px;
+
+    border-radius:10px;
+
+    background:rgba(0,0,0,.82);
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:1.2rem;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:300;
+
+}
+
+#message.show{
+
+    opacity:1;
+
+}
+
+/* =========================================================
+   赤オーバーレイ
+========================================================= */
+
+#redOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#ff0000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:200;
+
+}
+
+/* =========================================================
+   キーパッド
+========================================================= */
+
+#keypadOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.72);
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:500;
+
+    transition:.25s;
+
+}
+
+#keypadOverlay.hidden{
+
+    display:none;
+
+}
+
+#keypad{
+
+    width:100%;
+
+    max-width:430px;
+
+    background:#1b1b1b;
+
+    border-radius:24px 24px 0 0;
+
+    padding:
+
+        24px
+        18px
+        calc(20px + env(safe-area-inset-bottom));
+
+}
+
+/* 閉じる */
+
+.closeKeypad{
+
+    width:44px;
+    height:44px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#444;
+
+    color:#fff;
+
+    font-size:1.3rem;
+
+    margin-left:auto;
+
+    margin-bottom:14px;
+
+}
+
+/* =========================================================
+   アルファベットキー
+========================================================= */
+
+#keys{
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:10px;
+
+}
+
+.keyButton{
+
+    height:52px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#333;
+
+    color:#fff;
+
+    font-size:1.1rem;
+
+    font-weight:bold;
+
+}
+
+.keyButton:active{
+
+    transform:scale(.95);
+
+    background:#666;
+
+}
+
+/* =========================================================
+   キーパッド操作
+========================================================= */
+
+#keypadControls{
+
+    margin-top:18px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+#keypadControls button{
+
+    height:52px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#5b5b5b;
+
+    color:#fff;
+
+    font-size:1rem;
+
+    font-weight:bold;
+
+}
+
+#enterBtn{
+
+    background:#0066ff !important;
+
+}
+
+#clearBtn{
+
+    background:#9a2626 !important;
+
+}
+
+/* =========================================================
+   ゲームオーバー
+========================================================= */
+
+#gameOverScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#c80000;
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    text-align:center;
+
+    z-index:999;
+
+}
+
+#gameOverScreen.hidden{
+
+    display:none;
+
+}
+
+#gameOverText{
+
+    font-size:2rem;
+
+    font-weight:bold;
+
+    line-height:1.6;
+
+}
+
+/* =========================================================
+   赤3回点滅
+========================================================= */
+
+.flashError{
+
+    animation:errorFlash .25s linear 3;
+
+}
+
+@keyframes errorFlash{
+
+    0%{
+        opacity:0;
+    }
+
+    50%{
+        opacity:.55;
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   残り5分以下点滅
+========================================================= */
+
+.warningFlash{
+
+    animation:warningFlash 2s ease-in-out infinite;
+
+}
+
+@keyframes warningFlash{
+
+    0%{
+        opacity:0;
+    }
+
+    50%{
+        opacity:.35;
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   小さいスマホ
+========================================================= */
+
+@media (max-width:390px){
+
+    #timerDisplay{
+
+        font-size:2.7rem;
+
+    }
+
+    #passwordInput{
+
+        height:54px;
+
+        font-size:1.7rem;
+
+    }
+
+    .keyButton{
+
+        height:48px;
+
+    }
+
+}
+
+/* =========================================================
+   タブレット
+========================================================= */
+
+@media (min-width:768px){
+
+    #gameContainer{
+
+        max-width:430px;
+
+        margin:auto;
+
+    }
+
+}

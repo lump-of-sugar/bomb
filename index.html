@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Page 1</title>
+
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page1">
+
+    <!-- ==========================================
+         背景オーバーレイ（赤点滅・ゲームオーバー演出用）
+    =========================================== -->
+    <div id="redOverlay"></div>
+
+    <!-- ==========================================
+         メインコンテナ
+    =========================================== -->
+    <main id="gameContainer">
+
+        <!-- 背景画像 -->
+        <div id="background"></div>
+
+        <!-- 爆弾パネル -->
+        <section id="bombPanel">
+
+            <!-- ==================================
+                 タイマー表示
+            =================================== -->
+            <div id="timerArea">
+                <div id="timerDisplay">50:00</div>
+            </div>
+
+            <!-- ==================================
+                 パスワード入力
+            =================================== -->
+            <div id="passwordArea">
+
+                <!-- 入力欄 -->
+                <input
+                    id="passwordInput"
+                    type="text"
+                    inputmode="none"
+                    readonly
+                    maxlength="6"
+                    placeholder="------">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         メッセージ表示
+    =========================================== -->
+    <div id="message"></div>
+
+    <!-- ==========================================
+         アルファベットキーパッド
+    =========================================== -->
+    <div id="keypadOverlay" class="hidden">
+
+        <div id="keypad">
+
+            <!-- 閉じる -->
+            <button class="closeKeypad" id="closeKeypad">×</button>
+
+            <!-- キー配置 -->
+            <div id="keys">
+
+                <!-- A～ZはJavaScriptで生成 -->
+
+            </div>
+
+            <!-- 操作ボタン -->
+            <div id="keypadControls">
+
+                <button id="backspaceBtn">
+                    ←
+                </button>
+
+                <button id="clearBtn">
+                    CLEAR
+                </button>
+
+                <button id="enterBtn">
+                    ENTER
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+         ゲームオーバー画面
+    =========================================== -->
+    <div id="gameOverScreen" class="hidden">
+
+        <div id="gameOverText">
+            夏休みを迎えることはできなかった…
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+
+</body>
+</html>
