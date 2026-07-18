@@ -78,7 +78,7 @@ body.page1{
     position:absolute;
 
     left:50%;
-    top:50%;
+    top:30%;
 
     transform:translate(-50%,-50%);
 
@@ -116,11 +116,11 @@ body.page1{
 
     color:#ff2d2d;
 
-    font-size:6rem;
+    font-size:5.5rem;
 
     font-weight:bold;
 
-    letter-spacing:6px;
+    letter-spacing:5px;
 
     font-family:
         "Courier New",
@@ -130,7 +130,7 @@ body.page1{
         0 0 6px #ff0000,
         0 0 12px #ff0000,
         0 0 20px #ff0000,
-        0 0 35px rgba(255,0,0,.8);
+        0 0 25px rgba(255,0,0,.8);
 
     user-select:none;
 
@@ -160,7 +160,7 @@ body.page1{
 
     color:#ffffff;
 
-    font-size:5rem;
+    font-size:3em;
 
     text-align:center;
 
