@@ -78,7 +78,7 @@ body.page1{
     position:absolute;
 
     left:50%;
-    top:35%;
+    top:32%;
 
     transform:translate(-50%,-50%);
 
@@ -142,7 +142,7 @@ body.page1{
 
 #passwordArea{
 
-    width:78%;
+    width:58%;
 
 }
 
@@ -150,7 +150,7 @@ body.page1{
 
     width:100%;
 
-    height:20%;
+    height:5%;
 
     border:none;
 
