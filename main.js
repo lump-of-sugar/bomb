@@ -214,7 +214,7 @@ function success() {
 
     keypadOverlay.classList.add("hidden");
 
-    showMessage("解除されました");
+    showMessage("時限装置が解除されました");
 
     setTimeout(() => {
 
