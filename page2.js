@@ -234,7 +234,7 @@ function success(){
 
     timerDisplay.textContent = "--:--";
 
-    showMessage("Buone vacanze！\n良い夏休みを！");
+    showMessage("爆弾の無力化に成功しました");
 
     setTimeout(()=>{
 
