@@ -78,7 +78,7 @@ body.page1{
     position:absolute;
 
     left:50%;
-    top:20%;
+    top:30%;
 
     transform:translate(-50%,-50%);
 
@@ -150,7 +150,7 @@ body.page1{
 
     width:100%;
 
-    height:90px;
+    height:50%;
 
     border:none;
 
