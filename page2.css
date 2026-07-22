@@ -146,7 +146,7 @@ body.page2{
 
     left:50%;
 
-    top:42%;
+    top:38%;
 
     transform:translateX(-50%);
 
@@ -185,27 +185,27 @@ body.page2{
 }
 
 .orange{
-    top:36px;
+    top:38px;
 }
 
 .yellow{
-    top:72px;
+    top:76px;
 }
 
 .green{
-    top:108px;
+    top:114px;
 }
 
 .cyan{
-    top:144px;
+    top:152px;
 }
 
 .blue{
-    top:180px;
+    top:190px;
 }
 
 .purple{
-    top:216px;
+    top:228px;
 }
 
 /* =========================================================
