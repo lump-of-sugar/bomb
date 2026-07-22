@@ -104,7 +104,7 @@ body.page1{
     justify-content:center;
     align-items:center;
 
-    margin-bottom:28px;
+    margin-bottom:5vh;
 
 }
 
@@ -143,7 +143,7 @@ body.page1{
 #passwordArea{
 
     width:58%;
-    margin-top:10vh;
+    margin-top:15vh;
 
 }
 
