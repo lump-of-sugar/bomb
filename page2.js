@@ -15,13 +15,13 @@ const SUCCESS_WIRE = "blue";
 
 // 切断後画像
 const CUT_IMAGES = {
-    red: "images/cut_red.webp",
-    orange: "images/cut_orange.webp",
-    yellow: "images/cut_yellow.webp",
-    green: "images/cut_green.webp",
-    cyan: "images/cut_cyan.webp",
-    blue: "images/cut_blue.webp",
-    purple: "images/cut_purple.webp"
+    red: "images/cut_red.png",
+    orange: "images/cut_orange.png",
+    yellow: "images/cut_yellow.png",
+    green: "images/cut_green.png",
+    cyan: "images/cut_cyan.png",
+    blue: "images/cut_blue.png",
+    purple: "images/cut_purple.png"
 };
 
 // 表示名
@@ -152,7 +152,7 @@ wireButtons.forEach(button=>{
         selectedWire = button.dataset.wire;
 
         confirmText.textContent =
-            WIRE_NAME[selectedWire] + "色のコードを切りますか？";
+            WIRE_NAME[selectedWire] + "のコードを切りますか？";
 
         confirmOverlay.classList.remove("hidden");
 
@@ -234,7 +234,7 @@ function success(){
 
     timerDisplay.textContent = "--:--";
 
-    showMessage("Buone vacanze！");
+    showMessage("Buone vacanze！\n良い夏休みを！");
 
     setTimeout(()=>{
 
