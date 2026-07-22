@@ -11,7 +11,7 @@
 const TOTAL_SECONDS = 5 * 60;
 
 // 正解コード
-const SUCCESS_WIRE = "blue";
+const SUCCESS_WIRE = "yellow";
 
 // 切断後画像
 const CUT_IMAGES = {
