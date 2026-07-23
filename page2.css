@@ -82,7 +82,7 @@ body.page2{
     position:absolute;
 
     left:50%;
-    top:23vh;
+    top:21vh;
 
     transform:translate(-50%,-50%);
 
@@ -185,27 +185,27 @@ body.page2{
 }
 
 .orange{
-    top:32px;
+    top:34px;
 }
 
 .yellow{
-    top:64px;
+    top:68px;
 }
 
 .green{
-    top:96px;
+    top:102px;
 }
 
 .cyan{
-    top:128px;
+    top:136px;
 }
 
 .blue{
-    top:160vh;
+    top:170vh;
 }
 
 .purple{
-    top:192px;
+    top:204px;
 }
 
 /* =========================================================
