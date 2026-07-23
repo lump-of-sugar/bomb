@@ -10,6 +10,9 @@
 // 正解パスワード
 const PASSWORD = "ESTATE";
 
+// カウントダウン開始日時
+const START_TIME = new Date(2026, 6, 24, 15, 0, 0);
+
 // 終了日時（2026年7月24日15:50）
 const DEADLINE = new Date(2026, 6, 24, 15, 50, 0);
 
@@ -52,8 +55,20 @@ window.addEventListener("load", () => {
 
     const now = new Date();
 
-    const remainingSeconds =
-        Math.max(0, Math.floor((DEADLINE - now) / 1000));
+    const now = new Date();
+
+    let remainingSeconds;
+
+    if (now < START_TIME) {
+
+        remainingSeconds = 50 * 60;
+
+    } else {
+
+        remainingSeconds =
+            Math.max(0, Math.floor((DEADLINE - now) / 1000));
+
+    }
 
     updateTimerDisplay(remainingSeconds);
 
@@ -74,11 +89,17 @@ function startTimer() {
 
         const now = new Date();
 
-        let remainingSeconds =
-            Math.floor((DEADLINE - now) / 1000);
+        let remainingSeconds;
 
-        if (remainingSeconds <= 300) {
-            redOverlay.classList.add("warningFlash");
+        if (now < START_TIME) {
+
+            remainingSeconds = 50 * 60;
+
+        } else {
+
+            remainingSeconds =
+                Math.floor((DEADLINE - now) / 1000);
+
         }
 
         if (remainingSeconds <= 0) {
