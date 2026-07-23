@@ -276,7 +276,7 @@ function success(){
 
     redOverlay.classList.remove("warningFlash");
 
-    timerDisplay.textContent = "\(*ˊᗜˋ*)/";
+    timerDisplay.textContent = "(,,>᎑<,,)";
 
     showMessage("爆弾の無力化に成功しました");
 
