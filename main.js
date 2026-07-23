@@ -10,11 +10,8 @@
 // 正解パスワード
 const PASSWORD = "ESTATE";
 
-// 制限時間（50分）
-const TOTAL_SECONDS = 50 * 60;
-
-// 残り時間
-let remainingSeconds = TOTAL_SECONDS;
+// 終了日時（2026年7月24日15:50）
+const DEADLINE = new Date(2026, 6, 24, 15, 50, 0);
 
 // タイマー状態
 let timerRunning = true;
@@ -53,7 +50,12 @@ window.addEventListener("load", () => {
 
     createKeyboard();
 
-    updateTimerDisplay();
+    const now = new Date();
+
+    const remainingSeconds =
+        Math.max(0, Math.floor((DEADLINE - now) / 1000));
+
+    updateTimerDisplay(remainingSeconds);
 
     startTimer();
 
@@ -70,19 +72,20 @@ function startTimer() {
 
         if (!timerRunning) return;
 
-        remainingSeconds--;
+        const now = new Date();
+
+        let remainingSeconds =
+            Math.floor((DEADLINE - now) / 1000);
 
         if (remainingSeconds <= 300) {
-
             redOverlay.classList.add("warningFlash");
-
         }
 
         if (remainingSeconds <= 0) {
 
             remainingSeconds = 0;
 
-            updateTimerDisplay();
+            updateTimerDisplay(remainingSeconds);
 
             timerRunning = false;
 
@@ -91,16 +94,15 @@ function startTimer() {
             gameOver();
 
             return;
-
         }
 
-        updateTimerDisplay();
+        updateTimerDisplay(remainingSeconds);
 
     }, 1000);
 
 }
 
-function updateTimerDisplay() {
+function updateTimerDisplay(remainingSeconds) {
 
     const min = Math.floor(remainingSeconds / 60);
     const sec = remainingSeconds % 60;
