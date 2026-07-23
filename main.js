@@ -54,9 +54,7 @@ window.addEventListener("load", () => {
     createKeyboard();
 
     const now = new Date();
-
-    const now = new Date();
-
+   
     let remainingSeconds;
 
     if (now < START_TIME) {
@@ -101,6 +99,14 @@ function startTimer() {
                 Math.floor((DEADLINE - now) / 1000);
 
         }
+
+      　// 残り5分で警告開始
+        if (remainingSeconds <= 300) {
+
+            redOverlay.classList.add("warningFlash");
+
+        }
+
 
         if (remainingSeconds <= 0) {
 
