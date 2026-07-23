@@ -11,7 +11,7 @@
 const PASSWORD = "ESTATE";
 
 // カウントダウン開始日時
-const START_TIME = new Date(2026, 6, 23, 22, 30, 0);
+const START_TIME = new Date(2026, 6, 24, 15, 00, 0);
 
 // 終了日時（2026年7月24日15:50）
 const DEADLINE = new Date(2026, 6, 24, 15, 50, 0);
