@@ -10,6 +10,8 @@
 // 制限時間（5分）
 const TOTAL_SECONDS = 5 * 60;
 
+const RESET_TIME = new Date(2026, 6, 24, 15, 50, 0).getTime();
+
 // 正解コード
 const SUCCESS_WIRE = "yellow";
 
@@ -95,6 +97,23 @@ const wireButtons = document.querySelectorAll(".wireBtn");
 ========================================================== */
 
 window.addEventListener("load", () => {
+   
+    // 15:50を過ぎたら記録を削除
+    if(Date.now() >= RESET_TIME){
+
+        localStorage.removeItem("page2Deadline");
+        localStorage.removeItem("page2GameOver");
+
+    }
+
+    // ゲームオーバー記録があるなら即終了
+    if(localStorage.getItem("page2GameOver")){
+
+        gameOver();
+
+        return;
+
+    }
 
     const remainingSeconds =
         Math.max(
@@ -249,13 +268,15 @@ function success(){
    
     localStorage.removeItem("page2Deadline");
 
+    localStorage.removeItem("page2GameOver");
+
     timerRunning = false;
 
     clearInterval(timerInterval);
 
     redOverlay.classList.remove("warningFlash");
 
-    timerDisplay.textContent = "--:--";
+    timerDisplay.textContent = "\(*ˊᗜˋ*)/";
 
     showMessage("爆弾の無力化に成功しました");
 
@@ -285,7 +306,7 @@ function failure(){
 
 function gameOver(){
 
-    localStorage.removeItem("page2Deadline");
+    localStorage.setItem("page2GameOver","true");
 
     timerRunning = false;
 
