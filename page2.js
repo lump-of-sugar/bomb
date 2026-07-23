@@ -40,7 +40,24 @@ const WIRE_NAME = {
    状態
 ---------------------------------------------------------- */
 
-let remainingSeconds = TOTAL_SECONDS;
+let deadline;
+
+// 保存済みの終了時刻を取得
+const savedDeadline = localStorage.getItem("page2Deadline");
+
+if(savedDeadline){
+
+    deadline = Number(savedDeadline);
+
+}else{
+
+    deadline = Date.now() + TOTAL_SECONDS * 1000;
+
+    localStorage.setItem("page2Deadline", deadline);
+
+}
+
+
 let timerRunning = true;
 let timerInterval = null;
 let selectedWire = null;
@@ -79,7 +96,13 @@ const wireButtons = document.querySelectorAll(".wireBtn");
 
 window.addEventListener("load", () => {
 
-    updateTimer();
+    const remainingSeconds =
+        Math.max(
+            0,
+            Math.floor((deadline - Date.now()) / 1000)
+        );
+
+    updateTimer(remainingSeconds);
 
     startTimer();
 
@@ -96,7 +119,11 @@ function startTimer(){
 
         if(!timerRunning) return;
 
-        remainingSeconds--;
+        const remainingSeconds =
+            Math.max(
+                0,
+                Math.floor((deadline - Date.now()) / 1000)
+            );
 
         if(remainingSeconds <= 60){
 
@@ -104,11 +131,9 @@ function startTimer(){
 
         }
 
+        updateTimer(remainingSeconds);
+
         if(remainingSeconds <= 0){
-
-            remainingSeconds = 0;
-
-            updateTimer();
 
             timerRunning = false;
 
@@ -116,17 +141,13 @@ function startTimer(){
 
             gameOver();
 
-            return;
-
         }
-
-        updateTimer();
 
     },1000);
 
 }
 
-function updateTimer(){
+function updateTimer(remainingSeconds){
 
     const min = Math.floor(remainingSeconds / 60);
     const sec = remainingSeconds % 60;
@@ -225,6 +246,8 @@ function executeResult(color){
 ========================================================== */
 
 function success(){
+   
+    localStorage.removeItem("page2Deadline");
 
     timerRunning = false;
 
@@ -261,6 +284,8 @@ function failure(){
 ========================================================== */
 
 function gameOver(){
+
+    localStorage.removeItem("page2Deadline");
 
     timerRunning = false;
 
